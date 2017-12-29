@@ -1,5 +1,7 @@
 #include <iostream>
 #include <GL\glew.h>
+#include <ctime>
+#include <chrono>
 #include "display.h"
 #include "shader.h"
 #include "mesh.h"
@@ -19,7 +21,7 @@ int main()
 	Display display(WIDTH, HEIGHT, "GPCoursework-Steven Smith");
 	
 	//Creates the meshes
-	Mesh mesh("..//res//spaceship.obj");
+	Mesh mesh("..//res//spaceshipTest.obj");
 	Mesh mesh2("..//res//planet.obj");
 	Mesh mesh3("..//res//moon.obj");
 	//Creates the shader programs
@@ -33,35 +35,46 @@ int main()
 	Texture texture3("..//res//moon.png");
 	//Creates the camera
 	Transform cameraTransform = glm::vec3(0, -20, 0);
-	Camera camera(cameraTransform.GetPos(), 70.0f, (float)WIDTH / (float)HEIGHT, 0.01f, 1000.0f);
+	Camera camera(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), 70.0f, (float)WIDTH / (float)HEIGHT, 0.01f, 1000.0f);
 	//Creates the transforms for the objects
 	Transform transform = glm::vec3(0, 0, 0);
 	Transform transform2;
 	Transform transform3;
 	//Create Input Manager
 	InputManager* mInputMgr;
-	 mInputMgr = InputManager::Instance();
+	mInputMgr = InputManager::Instance();
+	float rotAngleStart = 0.0f;
+	float rotAngleNew = 0.0f;
 
 	//Used to manipulate the transforms 
 	float counter = 0.0f;
-
-	transform.GetRot().y = 1.57f;
+	float deltaTime = 0.0f;
+	long last = 0;
 
 	while (!display.IsClosed())
 	{
 		mInputMgr->Update();
+		long now = SDL_GetTicks();
+		deltaTime = ((float)now - last) / 20;
+		last = now;
 
 		if (mInputMgr->KeyDown(SDL_SCANCODE_W))
 		{
-			cameraTransform.GetPos().z += 0.5f;
+			glm::vec3 vel;
+			vel.x = (float)glm::sin(glm::radians(rotAngleNew * 100));
+			vel.z = (float)glm::cos(glm::radians(rotAngleNew * 100));
+			cameraTransform.GetPos() += vel * deltaTime;
 		}
 		if (mInputMgr->KeyDown(SDL_SCANCODE_S))
 		{
-			cameraTransform.GetPos().z -= 0.5f;
+			glm::vec3 vel;
+			vel.x = (float)glm::sin(glm::radians(rotAngleNew * 100));
+			vel.z = (float)glm::cos(glm::radians(rotAngleNew * 100));
+			cameraTransform.GetPos() -= vel * deltaTime;
 		}
 		if (mInputMgr->KeyDown(SDL_SCANCODE_A))
 		{
-			cameraTransform.GetPos().x += 0.5f;
+			cameraTransform.GetPos().x += 0.5f * deltaTime;
 		}
 		if (mInputMgr->KeyDown(SDL_SCANCODE_D))
 		{
@@ -69,27 +82,29 @@ int main()
 		}
 		if (mInputMgr->KeyDown(SDL_SCANCODE_Q))
 		{
-			transform.GetRot().y += 0.1f;
+			transform.GetRot().y += 0.01f;
+			camera.cameraUpdate(glm::vec2(0.01f, 0));
+			rotAngleNew += 0.01f;
 		}
 		if (mInputMgr->KeyDown(SDL_SCANCODE_E))
 		{
-			transform.GetRot().y -= 0.1f;
+			transform.GetRot().y -= 0.01f;
+			camera.cameraUpdate(glm::vec2(-0.01f, 0));
+			rotAngleNew -= 0.01f;
 		}
 		//Clears display
 		display.Clear(1.0f, 1.0f, 1.0f, 1.0f);
 
-		Camera camera(cameraTransform.GetPos(), 70.0f, (float)WIDTH / (float)HEIGHT, 0.01f, 1000.0f);
+		Camera camera(cameraTransform.GetPos(), camera.GetCameraRot(), 70.0f, (float)WIDTH / (float)HEIGHT, 0.01f, 1000.0f);
 
 		//Saves the counter in different ways to give different effects
 		float sinCounter = sinf(counter);
 		float cosCounter = cosf(counter);
 
 		//Set transform of first object
-		transform.GetPos().y = sinCounter;
 		transform.SetScale(glm::vec3(0.5, 0.5, 0.5));
 		transform.GetPos() = cameraTransform.GetPos();
-		transform.GetPos().z += 20.0f;
-		transform.GetPos().y -= 5.0f;
+		transform.GetPos().y -= 10.0f;
 
 		//Set transform of second object
 		transform2.GetPos() = (glm::vec3(-25, -10, 150));

@@ -59,7 +59,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32.lib;glew32s.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;glew32s.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;OpenGL32.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,6 +86,8 @@
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="obj_loader.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="sound.cpp" />
+    <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="stb_image.c" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
@@ -96,6 +98,8 @@
     <ClInclude Include="mesh.h" />
     <ClInclude Include="obj_loader.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="sound.h" />
+    <ClInclude Include="soundManager.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="transform.h" />
