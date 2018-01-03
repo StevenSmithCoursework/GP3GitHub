@@ -1,18 +1,7 @@
-﻿Build started 29-Dec-17 7:38:43 PM.
+﻿Build started 03-Jan-18 5:50:40 PM.
      1>Project "D:\Github\GP3GitHub\StevenSmithGPCoursework\StevenSmithGPCoursework\StevenSmithGPCoursework.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I.\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt sound.cpp soundManager.cpp
-         soundManager.cpp
-         Generating Code...
-         Compiling...
-         sound.cpp
-     1>d:\github\gp3github\stevensmithgpcoursework\stevensmithgpcoursework\sound.cpp(30): warning C4996: 'alutLoadWAVFile': was declared deprecated
-                 d:\github\gp3github\stevensmithgpcoursework\stevensmithgpcoursework\include\openal\alut.h(113) : see declaration of 'alutLoadWAVFile'
-     1>d:\github\gp3github\stevensmithgpcoursework\stevensmithgpcoursework\sound.cpp(45): warning C4996: 'alutUnloadWAV': was declared deprecated
-                 d:\github\gp3github\stevensmithgpcoursework\stevensmithgpcoursework\include\openal\alut.h(116) : see declaration of 'alutUnloadWAV'
-         Generating Code...
-       Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.exe" /INCREMENTAL /NOLOGO /LIBPATH:.\lib glew32.lib glew32s.lib SDL2.lib SDL2main.lib SDL2test.lib OpenGL32.lib OpenAL32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.lib" /MACHINE:X86 Debug\display.obj
+     1>Link:
+         D:\VisualStudio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.exe" /INCREMENTAL /NOLOGO /LIBPATH:.\lib alut.lib glew32.lib glew32s.lib OpenAL32.lib SDL2.lib SDL2main.lib SDL2test.lib OpenGL32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.lib" /MACHINE:X86 Debug\display.obj
          Debug\inputManager.obj
          Debug\main.obj
          Debug\mesh.obj
@@ -22,11 +11,9 @@
          Debug\soundManager.obj
          Debug\stb_image.obj
          Debug\texture.obj
-     1>sound.obj : error LNK2019: unresolved external symbol __imp__alutLoadWAVFile referenced in function "public: void __thiscall sound::loadWAVFile(char const *)" (?loadWAVFile@sound@@QAEXPBD@Z)
-     1>sound.obj : error LNK2019: unresolved external symbol __imp__alutUnloadWAV referenced in function "public: void __thiscall sound::loadWAVFile(char const *)" (?loadWAVFile@sound@@QAEXPBD@Z)
-     1>D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.exe : fatal error LNK1120: 2 unresolved externals
-     1>Done Building Project "D:\Github\GP3GitHub\StevenSmithGPCoursework\StevenSmithGPCoursework\StevenSmithGPCoursework.vcxproj" (Build target(s)) -- FAILED.
+         StevenSmithGPCoursework.vcxproj -> D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.exe
+     1>Done Building Project "D:\Github\GP3GitHub\StevenSmithGPCoursework\StevenSmithGPCoursework\StevenSmithGPCoursework.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:02.54
+Time Elapsed 00:00:01.89
