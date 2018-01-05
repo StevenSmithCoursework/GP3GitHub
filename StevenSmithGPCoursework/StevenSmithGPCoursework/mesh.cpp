@@ -89,3 +89,21 @@ void Mesh::DrawMesh()
 
 	glBindVertexArray(0);
 }
+
+bool Mesh::SphereCollision(glm::vec3 playerPosition, float playerRadius, glm::vec3 modelPosition, float modelRadius)
+{
+	const float distSq = lengthSQRD(playerPosition - modelPosition);
+
+	const float sumRadius = (playerRadius + modelRadius);
+
+	if (distSq < sumRadius * sumRadius)
+	{
+		return true;
+	}
+	return false;
+}
+
+float Mesh::lengthSQRD(glm::vec3 modelLength)
+{
+	return (modelLength.x * modelLength.x) + (modelLength.y * modelLength.y) + (modelLength.z * modelLength.z);
+}

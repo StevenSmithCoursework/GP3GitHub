@@ -37,6 +37,8 @@ public:
 	Mesh(const std::string& fileName);
 
 	void DrawMesh();
+	bool SphereCollision(glm::vec3 playerPosition, float playerRadius, glm::vec3 modelPosition, float modelRadius);
+	float lengthSQRD(glm::vec3 modelLength);
 
 	~Mesh();
 

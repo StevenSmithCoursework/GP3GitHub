@@ -1,6 +1,9 @@
 #include "display.h"
 #include <GL\glew.h>
 #include <iostream>
+#include"SDL_ttf.h"
+
+SDL_Renderer *Display::renderer = nullptr;
 
 
 Display::Display(int windowWidth, int windowHeight, const std::string& windowName)
@@ -29,20 +32,38 @@ Display::Display(int windowWidth, int windowHeight, const std::string& windowNam
 		std::cerr << "Glew failed to initialise" << std::endl;
 	}
 
+	renderer = SDL_CreateRenderer(m_Window, -1, SDL_RENDERER_ACCELERATED);
+	
+	if (renderer == nullptr)
+	{
+		std::cerr << "Failed to create renderer" << std::endl;
+	}
+
+	if (TTF_Init() == -1)
+	{
+		std::cerr << "SDL_TTF failed to initialise" << std::endl;
+	}
+
 	//Sets closed to false
 	m_isClosed = false;
 
 	//Enables a depth test and face culling to help with drawing objects within the window
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+	glClearStencil(0);
+	glClearDepth(1.0f);
+	glDepthFunc(GL_LEQUAL);
 }
 
 Display::~Display()
 {
 	//Clears any information that was created within the constructor
 	SDL_GL_DeleteContext(m_glContext);
+	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(m_Window);
+	TTF_Quit();
 	SDL_Quit();
 }
 
@@ -51,6 +72,8 @@ void Display::Clear(float r, float g, float b, float a)
 	//Clears the display screen
 	glClearColor(r, g, b, a);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 bool Display::IsClosed()
@@ -73,4 +96,34 @@ void Display::SwapBuffers()
 			m_isClosed = true;
 		}
 	}
+}
+
+void Display::onResize(int width, int height)
+{
+	glViewport(0, 0, width, height);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glMatrixMode(GL_MODELVIEW);
+
+	glLoadIdentity();
+}
+
+void Display::setOrtho2D(int windowWidth, int windowHeight)
+{
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glViewport(0, 0, windowWidth, windowHeight);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0.0, windowWidth, windowHeight, 0.0, 0.0, -1.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+}
+
+void Display::setProjection3D(int windowWidth, int windowHeight)
+{
+	onResize(windowWidth, windowHeight);
 }
