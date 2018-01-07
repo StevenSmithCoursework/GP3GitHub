@@ -90,6 +90,7 @@ void Mesh::DrawMesh()
 	glBindVertexArray(0);
 }
 
+//Checks for collisions using spheres
 bool Mesh::SphereCollision(glm::vec3 playerPosition, float playerRadius, glm::vec3 modelPosition, float modelRadius)
 {
 	const float distSq = lengthSQRD(playerPosition - modelPosition);
@@ -103,6 +104,7 @@ bool Mesh::SphereCollision(glm::vec3 playerPosition, float playerRadius, glm::ve
 	return false;
 }
 
+//Calculates and squares the length entered
 float Mesh::lengthSQRD(glm::vec3 modelLength)
 {
 	return (modelLength.x * modelLength.x) + (modelLength.y * modelLength.y) + (modelLength.z * modelLength.z);

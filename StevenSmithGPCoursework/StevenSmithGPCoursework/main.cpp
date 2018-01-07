@@ -122,7 +122,8 @@ int main()
 	GLfloat g_Ambient[] = { 0.2, 0.2, 0.2, 1.0 };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, g_Ambient);
 	//Show controls
-	cout << "Use WASD to move, Q/E to rotate (buggy) and T to change cameras" << endl;
+	cout << "Use WASD to move, Q/E to rotate (buggy), T to change cameras and M to mute/unmute" << endl;
+	cout << "Collect all 5 cargo crates to win!" << endl;
 	//Show score
 	cout << "Current Score: " << score << endl;
 
@@ -142,7 +143,7 @@ int main()
 		if (sound == true)
 		{
 			theSoundManager->getSnd("Engine")->playAudio(AL_TRUE);
-			theSoundManager->getSnd("Theme")->playAudio(AL_TRUE);
+			theSoundManager->getSnd("Theme")->playAudio(AL_LOOPING);
 			sound = false;
 		}
 		//Checks if the user has pressed WASD and moves player accordingly
@@ -186,11 +187,28 @@ int main()
 		{
 			thirdPerson = !thirdPerson;
 		}
-		//Mutes any sounds played (does not toggle on/off)
+		//Mutes/Unmutes any sounds played
 		if (mInputMgr->KeyDown(SDL_SCANCODE_M))
 		{
+			if (muted == false)
+			{
 				theSoundManager->release();
 				muted = true;
+				cout << "Muted" << endl;
+			}
+			else if (muted == true)
+			{
+				theSoundManager = soundManager::getInstance();
+				LPCSTR gameSounds[3] = { "..//res//ShipEngine.wav", "..//res//GameTheme.wav", "..//res//ItemCollect.wav" };
+				theSoundManager->add("Engine", gameSounds[0]);
+				theSoundManager->add("Theme", gameSounds[1]);
+				theSoundManager->add("Collect", gameSounds[2]);
+				theSoundManager->getSnd("Engine")->playAudio(AL_TRUE);
+				theSoundManager->getSnd("Theme")->playAudio(AL_LOOPING);
+				muted = false;
+				cout << "Unmuted" << endl;
+			}
+				
 		}
 		//Picks what camera to display
 		if (thirdPerson == true)

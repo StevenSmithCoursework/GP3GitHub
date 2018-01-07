@@ -97,18 +97,23 @@ void Display::SwapBuffers()
 		}
 	}
 }
-
+//Deals with the window being resized
 void Display::onResize(int width, int height)
 {
 	glViewport(0, 0, width, height);
-
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glMatrixMode(GL_MODELVIEW);
-
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glClearStencil(0);
+	glClearDepth(1.0f);
+	glDepthFunc(GL_LEQUAL);
 	glLoadIdentity();
 }
-
+//Sets the display to Orthographic to help with rendering text
 void Display::setOrtho2D(int windowWidth, int windowHeight)
 {
 	glDisable(GL_DEPTH_TEST);
@@ -122,7 +127,7 @@ void Display::setOrtho2D(int windowWidth, int windowHeight)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
-
+//Sets the view back to projection 
 void Display::setProjection3D(int windowWidth, int windowHeight)
 {
 	onResize(windowWidth, windowHeight);

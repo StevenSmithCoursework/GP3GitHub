@@ -1,10 +1,12 @@
-﻿Build started 05-Jan-18 3:47:44 PM.
+﻿Build started 06-Jan-18 10:54:27 PM.
      1>Project "D:\Github\GP3GitHub\StevenSmithGPCoursework\StevenSmithGPCoursework\StevenSmithGPCoursework.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I.\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I.\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp mesh.cpp soundManager.cpp
+         soundManager.cpp
+         mesh.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
          main.cpp
-     1>d:\github\gp3github\stevensmithgpcoursework\stevensmithgpcoursework\main.cpp(122): warning C4305: 'initializing' : truncation from 'double' to 'GLfloat'
-     1>d:\github\gp3github\stevensmithgpcoursework\stevensmithgpcoursework\main.cpp(220): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.exe" /INCREMENTAL /NOLOGO /LIBPATH:.\lib alut.lib glew32.lib glew32s.lib OpenAL32.lib SDL2.lib SDL2_ttf.lib SDL2main.lib SDL2test.lib OpenGL32.lib ftgl.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Github\GP3GitHub\StevenSmithGPCoursework\Debug\StevenSmithGPCoursework.lib" /MACHINE:X86 Debug\display.obj
          Debug\font.obj
@@ -25,4 +27,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.55
+Time Elapsed 00:00:02.96

@@ -9,7 +9,6 @@ class soundManager
 public:
 	void add(LPCSTR sndName, LPCSTR fileName);
 	sound* getSnd(LPCSTR sndName);
-	void deleteSnd();
 	void release();
 	static soundManager* getInstance();
 

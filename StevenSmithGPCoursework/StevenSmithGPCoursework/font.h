@@ -5,7 +5,7 @@
 #include <Windows.h>
 
 using namespace std;
-
+//Creates a colour structure to change the colour of text
 struct colour3f
 {
 	colour3f(float _r = 0.0f, float _g = 0.0f, float _b = 0.0f) : r(_r), g(_g), b(_b) {}
@@ -27,7 +27,5 @@ public:
 
 private:
 	FTFont* theFont;
-
-private:
 };
 

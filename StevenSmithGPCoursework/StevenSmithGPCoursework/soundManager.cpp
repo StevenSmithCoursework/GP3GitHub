@@ -58,12 +58,6 @@ sound* soundManager::getSnd(LPCSTR sndName)
 		return NULL;
 	}
 }
-//Attempt to stop audio (not working)
-void soundManager::deleteSnd()
-{
-	sound stopAudio();
-}
-
 
 soundManager::~soundManager()
 {
